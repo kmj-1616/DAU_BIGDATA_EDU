@@ -1,3 +1,4 @@
+#데이터의 확인하기
 (a<-20)
 a<-20
 a->b
@@ -22,8 +23,9 @@ DN <- as.numeric(DE)
 TT <- as.Date("1970-01-01")
 tt <- as.numeric(TT)
 
-Sys.Date()
-as.numeric(Sys.Date())-as.numeric(as.Date("2001-10-06")) #태어난 일수 계산
+#태어난 지 며칠째인지 계산하기
+Sys.Date() #오늘 
+as.numeric(Sys.Date())-as.numeric(as.Date("2001-10-06"))
 
 #vector
 x <- c(1,4,6,8,20,34,5,9)
@@ -88,8 +90,8 @@ Fruits
 #aggregate
 aggregate(Sales~Fruit, Fruits, sum) #(계산될컬럼~기준될컬럼,데이터,함수)
 aggregate(Sales~Date, Fruits, mean)
-#mean,min,max,sd
-#지역별 이익을 최대값, 최소값을 구하세요
+#mean,min,max,sd(평균, 최솟값, 최댓값, 표준편차)
+#지역별 이익을 최대값, 최소값을 구하세요.
 aggregate(Profit~Location, Fruits, max)
 aggregate(Profit~Location, Fruits, min)
 
@@ -101,7 +103,7 @@ summarise(G.t, sum(Sales))
 summarise(G.t, mean(Sales))
 summarise(G.t, M_Profit=mean(Profit), SD_Profit=sd(Profit))
 
-#%>% Ctrl+Shift+m
+# %>% : Ctrl+Shift+m
 Fruits %>% 
   group_by(Fruit) %>% 
   summarise(mean(Sales), sd(Sales))
@@ -139,6 +141,6 @@ arrange(Fruits, Fruit, desc(Year))
 Fruits %>% 
   arrange(Fruit, desc(Year))
 
-#과일별로 지역에 따라 이익의 순서대로 정렬하시오
+#과일별로 지역에 따라 이익의 순서대로 정렬하시오.
 Fruits %>% 
   arrange(Fruit, Location, Profit)
